@@ -1,2 +1,3 @@
 #!/bin/bash
-python3 $SM_PATH/sm.py
+printf "\033c"
+python3 $SM_PATH/sm.py 2>$SM_LOG/2 
