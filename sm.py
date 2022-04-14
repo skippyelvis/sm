@@ -35,12 +35,11 @@ class SM:
         name = self.names[kbd]
         xfname = os.path.join(self.m[name], "xinitrc")
         xfname = os.path.expanduser(xfname)
-        print(xfname)
         return xfname
 
     def run_response_session(self, xfname):
         cmd = f"startx {xfname}"
-        subprocess.Popen(["startx", xfname])
+        subprocess.run(["startx", xfname])
 
     def sm(self):
         self.show_table()
