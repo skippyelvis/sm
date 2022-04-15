@@ -1,3 +1,28 @@
 #!/bin/bash
 printf "\033c"
-python3 $SM_PATH/sm.py 2>$SM_LOG/2 
+
+run() {
+	rm $SM_LOG/2
+	python3 $SM_PATH/sm.py 2>$SM_LOG/2 
+}
+
+logout() {
+	loginctl terminate-user $USER
+}
+
+usage() {
+	printf "usage:  $ sm [*run|logout]%s\n"
+	exit 1
+}
+
+if [[ "$#" -gt 1 ]]; then
+	usage
+fi
+
+if [[ -z "$1" || "$1" == "run" ]]; then 
+	run
+elif [[ ! -z "$1" && "$1" == "logout" ]]; then
+	logout
+else
+	usage
+fi
