@@ -12,12 +12,12 @@ class SM:
         for i, (k, v) in enumerate(self.m):
             print(i, k)
         choice = input("choice> ").strip()
-        script = self.m[int(choice)][1]
-        print(script)
+        script = self.m[int(choice)][1].split(' ')
+        subprocess.run(script)
 
 if __name__ == '__main__':
     avail = [ 
-        ['qtile', 'startx ~/.config/qtile'],
+        ['qtile', f'startx /home/{os.getlogin()}/.config/qtile/xinitrc'],
         ['tty',   ''],
     ]
     sm = SM(avail)
